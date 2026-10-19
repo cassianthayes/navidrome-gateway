@@ -1,0 +1,19 @@
+# /etc/systemd/system/navidrome-upload.service
+# WebDAV write endpoint into the Navidrome library, localhost only (Caddy fronts it).
+[Unit]
+Description=WebDAV upload endpoint for Navidrome
+After=network-online.target
+
+[Service]
+User=navidrome
+Group=navidrome
+# Contains: RCLONE_USER=telegram  RCLONE_PASS=<long random string>
+EnvironmentFile=/etc/navidrome-upload.env
+ExecStart=rclone serve webdav /opt/navidrome/music/telegram --addr 127.0.0.1:8090
+Restart=on-failure
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/navidrome/music/telegram
+
+[Install]
+WantedBy=multi-user.target

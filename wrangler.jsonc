@@ -1,0 +1,11 @@
+{
+  "name": "navidrome-gateway",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-01",
+  "vars": {
+    "ALLOWED_USER_ID": "8510458463",
+    "WEBDAV_URL": "https://music.cssnt.ru/upload",
+    "WEBDAV_USER": "telegram",
+  },
+  // Secrets (wrangler secret put): BOT_TOKEN, WEBHOOK_SECRET, WEBDAV_PASS
+}
